@@ -2,8 +2,8 @@
 local M = {}
 
 M.ui = {
-  theme = "catppuccin",
-  theme_toggle = { "catppuccin", "github_light" },
+  theme = "github_dark",
+  theme_toggle = { "github_dark", "radium" },
   statusline = {
     separator_style = "arrow",
   },

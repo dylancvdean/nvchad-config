@@ -90,6 +90,69 @@ local plugins = {
     "ThePrimeagen/vim-be-good",
     event = "VeryLazy",
   },
+
+   -- Notification manager
+   {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require("notify").setup({
+        background_colour = "#000000",
+      })
+      vim.notify = require("notify")
+    end,
+  },
+  
+  -- Git integration
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("gitsigns").setup({
+        signs = {
+          add = {text = "+"},
+          change = {text = "~"},
+          delete = {text = "_"},
+          topdelete = {text = "‾"},
+          changedelete = {text = "~"},
+        },
+      })
+    end,
+  },
+  
+  {
+    "numToStr/Comment.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("Comment").setup()
+    end,
+  },
+  
+  -- Fuzzy finder
+  {
+    "junegunn/fzf",
+    run = function() vim.fn["fzf#install"]() end,  -- Ensure fzf binary is installed
+    event = "VeryLazy",
+  },
+  {
+    "junegunn/fzf.vim",
+    after = "fzf",
+    config = function()
+    end,
+  },
+  
+  {
+    "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    config = function()
+      require("lspconfig").clangd.setup({
+        cmd = {"clangd", "--background-index", "--suggest-missing-includes"},
+        on_attach = function(client, bufnr)
+        end,
+      })
+    end,
+  },
+  
 }
 
 return plugins

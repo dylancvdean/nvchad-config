@@ -16,6 +16,7 @@ local treesitter = {
     --low lvl
     "c",
     "cpp",
+    "cuda",
     "make",
     "cmake",
     "meson",
